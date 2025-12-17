@@ -1,0 +1,137 @@
+name: Publish to Zenodo (v1.9)
+
+on:
+  push:
+    tags:
+      - "v*.*.*"  # A tag is pushed to the repository (e.g., v1.2.3)
+  workflow_dispatch: # Manually triggered workflow
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest  #Runs the publish job on the latest Ubuntu runner.
+
+    steps:
+      # Step 1: Checkout the repository
+      ## This step checks out the repository so that the workflow has access to the code and metadata (e.g., README.md and metadatav1.9.yml).
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Fetch Zenodo concept ID from GitHub repository variables
+      ## This step checks if the repository already has a Zenodo concept ID saved as a GitHub Actions repository variable (ZENODO_CONCEPT_ID_NEW).
+      ## If found:
+      ##   It sets the CONCEPT_ID output.
+      ##   Marks the variable as found=true.
+      ## If not found:
+      ##   Marks the variable as found=false.
+      ## Why this matters: Zenodo uses a concept ID to track different versions of the same dataset. We don’t want to create a new concept every time—we reuse it.
+
+      - name: Fetch Zenodo Concept ID
+        id: get-concept-id
+        env:
+          TOKEN: ${{ secrets.REPO_VAR_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          echo "Fetching existing Zenodo concept ID..."
+          VAR_RESPONSE=$(curl -s -H "Authorization: Bearer $TOKEN" \
+                             -H "Accept: application/vnd.github+json" \
+                             https://api.github.com/repos/$REPO/actions/variables/ZENODO_CONCEPT_ID_NEW)
+
+          VALUE=$(echo "$VAR_RESPONSE" | jq -r '.value // empty')
+          if [ -n "$VALUE" ]; then
+            echo "Found existing ZENODO_CONCEPT_ID_NEW=$VALUE"
+            echo "::set-output name=CONCEPT_ID::$VALUE"
+            echo "found=true" >> $GITHUB_OUTPUT
+          else
+            echo "No existing ZENODO_CONCEPT_ID_NEW found."
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi
+
+      # Step 3: Create a new CONCEPT if no existing ID is found
+      ## This step only runs if no concept ID was found in Step 2.
+      ## Calls the Zenodo API (sandbox) to create a new concept.
+      ## Captures both:
+      ##    conceptrecid: the persistent concept ID for versioning
+      ##    id: the deposition ID (used for uploading files and metadata)
+      ## Uses the secret ZENODO_SANDBOX_ACCESS_TOKEN for authentication.
+
+      - name: Create new concept id on Zenodo
+        if: steps.get-concept-id.outputs.found == 'false'
+        id: zenodo-create
+        env:
+          ZENODO_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
+        run: |
+          echo "Creating new concept id on Zenodo..."
+          CREATE_RESPONSE=$(curl -s -X POST "https://sandbox.zenodo.org/api/deposit/depositions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $ZENODO_ACCESS_TOKEN" \
+            -d '{}')
+
+          CONCEPT_ID=$(echo "$CREATE_RESPONSE" | jq -r '.conceptrecid // empty')
+          deposition_id=$(echo "$CREATE_RESPONSE" | jq -r '.id // empty')
+          if [ -z "$CONCEPT_ID" ]; then
+            echo "Error: Failed to create concept id."
+            exit 1
+          fi
+
+          echo "Created new concept with ID: $CONCEPT_ID"
+          echo "::set-output name=CONCEPT_ID::$CONCEPT_ID"
+          echo "Created new deposition with ID: $deposition_id"
+
+      # Step 4: Save the concept ID as a GitHub repository variable
+      ## If a new concept ID was created, this step:
+      ## Saves it as a repository variable (ZENODO_CONCEPT_ID_NEW) using GitHub’s REST API.
+      ## If the variable already exists, it’s updated.
+      ## If it doesn’t exist, it is created.
+      ## Uses REPO_VAR_TOKEN, a GitHub personal access token with permission to manage repo variables.
+      
+      - name: Save Zenodo concept ID as GitHub variable
+        if: steps.get-concept-id.outputs.found == 'false'
+        env:
+          TOKEN: ${{ secrets.REPO_VAR_TOKEN }}
+          REPO: ${{ github.repository }}
+          VAR_NAME: ZENODO_CONCEPT_ID_NEW
+          VAR_VALUE: ${{ steps.zenodo-create.outputs.CONCEPT_ID }}
+        run: |
+          echo "Saving Zenodo concept ID to GitHub repository variables..."
+          VAR_CHECK=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer $TOKEN" \
+            https://api.github.com/repos/$REPO/actions/variables/$VAR_NAME)
+
+          if [ "$VAR_CHECK" = "404" ]; then
+            echo "Variable does not exist. Creating it..."
+            curl -s -X POST \
+              -H "Authorization: Bearer $TOKEN" \
+              https://api.github.com/repos/$REPO/actions/variables \
+              -d '{"name":"'"$VAR_NAME"'", "value":"'"$VAR_VALUE"'"}'
+            echo "Created variable $VAR_NAME with value $VAR_VALUE"
+          else
+            echo "Variable exists. Updating it..."
+            curl -s -X PUT \
+              -H "Authorization: Bearer $TOKEN" \
+              https://api.github.com/repos/$REPO/actions/variables/$VAR_NAME \
+              -d '{"name":"'"$VAR_NAME"'", "value":"'"$VAR_VALUE"'"}'
+            echo "Updated variable $VAR_NAME with value $VAR_VALUE"
+          fi
+
+      # Step 5: Publish to Zenodo using the CONCEPT_ID dynamically
+      ## Uses a custom action (ipcc-ar7/publish-zenodo@v1.9) to:
+      ## Upload the file README.md
+      ## Apply metadata from metadatav1.9.yml
+      ## Use the correct concept ID for versioning
+      ## Publish to the Zenodo sandbox
+      ## publish: true means the record will be published immediately.
+      ## sandbox: true indicates it uses the Zenodo sandbox for testing, not the production Zenodo.
+
+      - name: Publish to Zenodo
+        uses: ipcc-ar7/publish-zenodo@v1.9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
+        with:
+          files: |
+            README.md
+          metadata: metadatav1.9.yml
+          sandbox: true
+          publish: true
+          verbose: true
+          concept: '${{ steps.get-concept-id.outputs.CONCEPT_ID || steps.zenodo-create.outputs.CONCEPT_ID }}'

@@ -1,0 +1,33 @@
+title: "Your Project Title" # replace with the title of repository
+
+# replace abstact with a brief description of the repository
+abstract: "This is a sample CFF file for a project. It includes metadata such as title, authors, version, license, and DOI. The file is structured in YAML format and follows the Citation File Format (CFF) specification."
+
+authors:
+# Replace the following with the authors
+  -
+    affiliation: "IPCC WGI TSU, France"
+    family-names: Hong
+    given-names: Mai
+    orcid: "https://orcid.org/0009-0005-5453-6446"
+
+  -
+    affiliation: "IPCC WGI TSU, France"
+    family-names: Hong
+    given-names: Mai
+    orcid: "https://orcid.org/0009-0005-5453-6446"
+
+cff-version: 1.2.0 # replace with the CFF version
+version: "1.0.0" # replace with the version of the repository
+date-released: 2024-04-15 # replace with the release date
+repository: https://github.com/edsml-mh1123/ar7-wg1-fod-ch99-fig99-template # replace with the URL of the repository
+keywords: # replace with relevant keywords
+  - IPCC
+  - AR7
+  - WG1
+  - figure
+  - data processing
+doi: "10.5281/zenodo.1234567" # replace with the DOI
+license: "Apache-2.0"
+message: "If you use this repository, please cite it using the following metadata."
+...

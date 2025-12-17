@@ -1,0 +1,24 @@
+# code.yml — Metadata for the contents of the 'code/' directory
+
+description: "Contains scripts and tools used for data processing, modeling, and analysis."
+
+scripts:
+  - name: "recipe_ipccwg1ar6ch3_atmosphere.yml"
+    path: "https://github.com/ipcc-wgi/ESMValTool-AR6-OriginalCode-FinalFigures/blob/ar6_chapter_3/esmvaltool/recipes/ipccwg1ar6ch3/recipe_ipccwg1ar6ch3_atmosphere.yml"
+    description: "Plot the figure"
+
+  - name: "tas_anom.ncl"
+    path: "https://github.com/ipcc-wgi/ESMValTool-AR6-OriginalCode-FinalFigures/blob/ar6_chapter_3/esmvaltool/diag_scripts/ipcc_ar6/tas_anom.ncl"
+
+    description: "Diagnostics"
+
+  - name: "tsline_blend_collect.ncl"
+    path: "https://github.com/ipcc-wgi/ESMValTool-AR6-OriginalCode-FinalFigures/blob/ar6_chapter_3/esmvaltool/diag_scripts/ipcc_ar6/tsline_blend_collect.ncl"
+    description: "Diagnostics"
+
+language: "Python"
+
+related_repositories:
+  - name: "ESMValTool-AR6-OriginalCode-FinalFigures"
+    url: "https://github.com/ipcc-wgi/ESMValTool-AR6-OriginalCode-FinalFigures/tree/ar6_chapter_3"
+    relation: "Resource"

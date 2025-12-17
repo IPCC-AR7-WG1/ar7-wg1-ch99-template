@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "upload_type": "dataset",
+    "title": "PRECIPITATION CHANGE IN THE MID-HOLOCENE",
+    "description": "Example repository based on IPCC AR6 Fig 3.11.",
+    "creators": [
+      {
+        "name": "Hong, Mai",
+        "affiliation": "IPCC AR7 WGI TSU",
+        "orcid": "0009-0005-5453-6446"
+      }
+    ],
+    "keywords": ["Precipitation", "visualization", "Python"],
+    "license": "Apache-2.0",
+    "version": "1.0.0",
+    "access_right": "open",
+    "publication_date": "2025-04-04",
+    "related_identifiers": [
+      {
+        "relation": "isSupplementTo",
+        "identifier": "https://github.com/edsml-mh1123/ar7-wg1-fod-ch99-fig99-Python",
+        "resource_type": "software"
+      }
+    ],
+    "communities": [
+      {
+        "identifier": "opensource"
+      }
+    ],
+    "language": "eng",
+    "contributors": [],
+    "references": [],
+    "grants": []
+  }
+}
