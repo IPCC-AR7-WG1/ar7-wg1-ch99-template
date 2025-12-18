@@ -14,7 +14,6 @@ Chapter 99
   - [Figure Folder Names](#figure-folder-names)
   - [Naming Rules](#naming-rules)
 
----
 
 ## Repository Organisation Guidelines
 
@@ -50,7 +49,6 @@ fig_xx/
 - **Clear attribution**  
   Every figure folder must include a `CITATION.cff` file to ensure proper authorship and citation tracking.
 
----
 
 ## Folder Naming Conventions
 
