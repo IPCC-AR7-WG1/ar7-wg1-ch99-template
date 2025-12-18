@@ -26,7 +26,7 @@ Each figure folder is fully self-contained and includes the code, metadata, outp
 Each figure directory must follow this structure:
 
 ```
-fig_xx/
+figXX_YY/
 ├── code/ # Scripts or notebooks used to generate the figure
 ├── data/ # Metadata for input datasets (original data files excluded)
 ├── figure/ # Generated figure(s)
@@ -54,13 +54,20 @@ fig_xx/
 
 ### Figure Folder Names
 
-- Use the format: `fig_XX`
+Use the format: `figXX_YY`
 
-where `XX` is a **two-digit figure number** (e.g. `fig_01`, `fig_02`).
+`XX` = two-digit chapter number
 
-- If the final figure number is not yet known, use a **descriptive temporary name**: fig_<short_descriptive_name> 
+`YY` = two-digit figure number within the chapter
 
-Please rename the folder to the final `fig_XX` format once the figure number is confirmed.
+Example:
+Chapter 1, Figure 3  → `fig01_03`
+Chapter 5, Figure 12 → `fig05_12`
+Chapter 10, Figure 2 → `fig10_02`
+
+- If the final figure number is not yet known, use a **descriptive temporary name**: fig_XX_<short_descriptive_name> 
+
+Please rename the folder to the final `figXX_YY` format once the figure number is confirmed.
 
 ### Naming Rules
 
