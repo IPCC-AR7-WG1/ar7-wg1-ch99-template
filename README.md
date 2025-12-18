@@ -61,8 +61,11 @@ Use the format: `figXX_YY`
 `YY` = two-digit figure number within the chapter
 
 Example:
+
 Chapter 1, Figure 3  → `fig01_03`
+
 Chapter 5, Figure 12 → `fig05_12`
+
 Chapter 10, Figure 2 → `fig10_02`
 
 - If the final figure number is not yet known, use a **descriptive temporary name**: fig_XX_<short_descriptive_name> 
