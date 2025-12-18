@@ -54,7 +54,7 @@ figXX_YY/
 
 ### Figure Folder Names
 
-Use the format: `figXX_YY`
+- Use the format: `figXX_YY`
 
 `XX` = two-digit chapter number
 
