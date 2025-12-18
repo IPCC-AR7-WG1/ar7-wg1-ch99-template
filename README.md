@@ -1,117 +1,71 @@
-FIGURE TITLE
+Chapter 99
 ====================================
 [![DOI](https://zenodo.org/badge/DOI/YOUR_ZENODO_DOI.svg)](https://doi.org/YOUR_ZENODO_DOI)
 ![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 ![GitHub release](https://img.shields.io/github/v/release/YOUR_ORG/YOUR_REPO?logo=github)
 
-Figure X.X  From the IPCC Working Group I Contribution to the Seventh Assessment Report: Chapter X
-
-![Figure caption](<REPLACE_WITH_YOUR_IMAGE_PATH>)
-
-Example: 
-
-Figure 3.4  From the IPCC Working Group I Contribution to the Sixth Assessment Report: Chapter 3
-![Figure caption](/figure/ar6_wg1_chap3_figure3_4_surface_temp_anomaly.png?raw=true)
-
 ## Contents
 
 - [Contents](#contents)
-- [Description](#description)
-- [Installation](#installation)
-- [Expected image path](#expected-image-path)
-- [How to cite](#how-to-cite) 
-  - [Figure Citation](#figure-citation)
-  - [Repository Citation](#repository-citation)
-- [Disclaimer](#disclaimer)
+- [Repository Organisation Guidelines](#repository-organisation-guidelines)
+  - [Standard Figure Folder Structure](#standard-figure-folder-structure)
+  - [General Rules](#general-rules)
+- [Folder Naming Conventions](#folder-naming-conventions)
+  - [Figure Folder Names](#figure-folder-names)
+  - [Naming Rules](#naming-rules)
 
+---
 
-## Description
+## Repository Organisation Guidelines
 
-Write a clear, concise, and self-contained description of the figure:
+This repository is organized by figure, with one top-level folder per figure.
 
-- What does the figure show?
+Each figure folder is fully self-contained and includes the code, metadata, outputs, and citation information needed to reproduce that figure.
 
-- What datasets/models are used?
+### Standard Figure Folder Structure
 
-- What time period does it cover?
+Each figure directory must follow this structure:
 
-- Any important features or highlights?
-
-
-## Installation
-
-example:
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/YOUR_ORG/YOUR_REPO.git
-cd YOUR_REPO
+```
+fig_xx/
+├── code/ # Scripts or notebooks used to generate the figure
+├── data/ # Metadata for input datasets (original data files excluded)
+├── figure/ # Generated figure(s)
+├── CITATION.cff # Citation information for this figure
+└── README.md # Figure description, usage, and citation instructions
 ```
 
-2. Create the environment
+### General Rules
 
-```bash
-conda env create -f environment.yml
-```
-This will create a new conda environment with the name defined in the environment.yml file (e.g., ipcc-fig-env).
+- **One figure per folder**  
+  Do not combine multiple figures in a single directory.
 
-3. Activate the environment
+- **Do NOT store large data files**  
+  The `data/` folder must contain **metadata only** (e.g. `.yml`, schema files, small samples).  
+  Large datasets must be stored in external long-term storage and referenced via links.
 
-```bash
-conda activate ipcc-fig-env
-```
+- **Reproducibility first**  
+  All scripts or notebooks required to generate the figure must be placed in `code/`.
 
-4. Run the figure generation pipeline
+- **Clear attribution**  
+  Every figure folder must include a `CITATION.cff` file to ensure proper authorship and citation tracking.
 
-......
+---
 
+## Folder Naming Conventions
 
-## Expected image path
+### Figure Folder Names
 
-Provide the expected output file paths from the tool's run:
+- Use the format: `fig_XX`
 
-- Include multiple paths if the figure has multiple sub-panels.
+where `XX` is a **two-digit figure number** (e.g. `fig_01`, `fig_02`).
 
-example:
-- recipe_ipccwg1ar6ch3_atmosphere_YYYYMMDD_HHMMSS/plots/fig_3_4_cmip5/fig-3-4/gsat_Global_CMIP5_historical-rcp45_anom_1850-2020.eps
-- recipe_ipccwg1ar6ch3_atmosphere_YYYYMMDD_HHMMSS/plots/fig_3_4_cmip6/fig-3-4/gsat_Global_CMIP6_historical-ssp245_anom_1850-2020.eps
-- recipe_ipccwg1ar6ch3_atmosphere_YYYYMMDD_HHMMSS/plots/fig_3_4_collect/collect/gsat_Global_multimodel_anom_1850-2020.eps
+- If the final figure number is not yet known, use a **descriptive temporary name**: fig_<short_descriptive_name> 
 
+Please rename the folder to the final `fig_XX` format once the figure number is confirmed.
 
-## How to cite
+### Naming Rules
 
-If you use this repository or any of its contents in your work, please cite it appropriately.
-
-### Repository Citation
-This repository includes a `CITATION.cff` file for citation. You can generate a citation in your preferred format using:
-
-```bash
-cffconvert --format bibtex
-```
-
-### Figure Citation
-If you use Figure <figure number eg 3.4> from the IPCC report included in this repository, please cite it as:
-
-Provide a full citation of the IPCC report chapter containing the figure, according to the IPCC editorial citation rules.
-
-
-## Disclaimer
-Please note that figures in this repository may differ from those in the published version due to the editorial process. The repository contains the latest available versions prior to publication.
-
-
-# 🟡Checklist Before Finalizing (delete when you complete the README.md)
-
-- Updated title and badges
-
-- Correct figure number and chapter
-
-- Real image path and preview
-
-- Descriptive summary in the Description section
-
-- Image output paths match the real output
-
-- At least one scientific source listed
-
-- Figure and repository citation are accurate
+- Use lowercase letters
+- Use underscores (`_`) instead of spaces or hyphens
+- Keep names short, clear, and descriptive

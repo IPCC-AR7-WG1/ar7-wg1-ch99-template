@@ -1,0 +1,23 @@
+# ================================
+# Metadata of Code - Template
+# ================================
+
+# code.yml — Metadata for the contents of the 'code/' directory
+
+description: "Contains scripts and tools used for data processing, modeling, and analysis."
+
+scripts:
+  - name: "example_figure_script.py"
+    path: "..."
+    description: "Plot the figure"
+
+  - name: "example_final_data_script.py"
+    path: "..."
+    description: "Generate final data"
+
+language: "Python"
+
+related_repositories:
+  - name: "xxx"
+    url: "xxx"
+    relation: "Resource"

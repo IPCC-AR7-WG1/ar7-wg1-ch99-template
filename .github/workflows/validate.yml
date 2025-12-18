@@ -1,0 +1,51 @@
+name: Validate Figure Folder Structure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Validate figure folders
+        run: |
+          echo "Validating figure folder structure..."
+
+          # Loop over top-level folders starting with fig_
+          for dir in fig_*; do
+            if [ -d "$dir" ]; then
+              echo "Checking folder: $dir"
+
+              # Required items
+              required=("code" "data" "figure" "CITATION.cff" "README.md")
+              missing=0
+
+              # Check each required item exists
+              for item in "${required[@]}"; do
+                if [ ! -e "$dir/$item" ]; then
+                  echo "❌ Missing required item in $dir: $item"
+                  missing=$((missing+1))
+                fi
+              done
+
+              # Check folder name pattern: fig_XX or fig_<descriptive_name>
+              if [[ ! "$dir" =~ ^fig_[0-9]{2}$ && ! "$dir" =~ ^fig_[a-z0-9_]+$ ]]; then
+                echo "❌ Folder name does not match naming rules: $dir"
+                missing=$((missing+1))
+              fi
+
+              if [ $missing -eq 0 ]; then
+                echo "✅ $dir passed validation"
+              else
+                echo "⚠️ $dir failed validation"
+                exit 1
+              fi
+            fi
+          done
+
+          echo "Repository structure validation completed."
