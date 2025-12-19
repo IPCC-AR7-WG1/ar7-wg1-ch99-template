@@ -17,7 +17,7 @@ Chapter 99
 
 ## Repository Organisation Guidelines
 
-This repository is organized by figure, with one top-level folder per figure.
+This repository is organised by figure, with one top-level folder per figure.
 
 Each figure folder is fully self-contained and includes the code, metadata, outputs, and citation information needed to reproduce that figure.
 
@@ -28,9 +28,9 @@ Each figure directory must follow this structure:
 ```
 figXX_YY/
 ├── code/ # Scripts or notebooks used to generate the figure
-├── data/ # Metadata for input datasets (original data files excluded)
+├── data/ # Metadata for datasets (original data files excluded)
 ├── figure/ # Generated figure(s)
-├── CITATION.cff # Citation information for this figure
+├── CITATION.cff # Citation information for the code
 └── README.md # Figure description, usage, and citation instructions
 ```
 
