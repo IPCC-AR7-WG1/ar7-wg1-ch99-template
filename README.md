@@ -31,6 +31,7 @@ figXX_YY/
 ├── data/ # Metadata for datasets (original data files excluded)
 ├── figure/ # Generated figure(s)
 ├── CITATION.cff # Citation information for the code
+├── LICENSE # the license for the code of figure
 └── README.md # Figure description, usage, and citation instructions
 ```
 
