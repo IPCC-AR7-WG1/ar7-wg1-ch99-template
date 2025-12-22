@@ -37,18 +37,9 @@ figXX_YY/
 
 ### General Rules
 
-- **One figure per folder**  
-  Do not combine multiple figures in a single directory.
-
 - **Do NOT store large data files**  
-  The `data/` folder must contain **metadata only** (e.g. `.yml`, schema files, small samples).  
-  Large datasets must be stored in external long-term storage and referenced via links.
-
-- **Reproducibility first**  
-  All scripts or notebooks required to generate the figure must be placed in `code/`.
-
-- **Clear attribution**  
-  Every figure folder must include a `CITATION.cff` file to ensure proper authorship and citation tracking.
+  - Do NOT store large datasets in GitHub. Large datasets must be stored in external long-term storage and referenced via links.
+  - For the Final Government Draft (FGD) stage, `data/` folder should contain **only metadata** (in YAML).
 
 
 ## Folder Naming Conventions
