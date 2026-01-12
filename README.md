@@ -20,9 +20,6 @@ Provide a brief summary of the chapter. Include key topics, concepts, and learni
 Describe the figures in this chapter. Mention what each figure represents.
 
 Example:
-## Figures
-
-All figure folders are located in the [figures folder](./figures).
 
 | Figure Folder | Preview | Description |
 |---------------|---------|-------------|
@@ -31,7 +28,6 @@ All figure folders are located in the [figures folder](./figures).
 |  |  |  |
 |  |  |  |
 |  |  |  |
-
 
 ## Disclaimer
 Please note that figures in this repository may differ from those in the published version due to the editorial process. The repository contains the latest available versions prior to publication.
