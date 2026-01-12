@@ -1,4 +1,4 @@
-Chapter 99
+Chapter 99: chapter title
 ====================================
 [![DOI](https://zenodo.org/badge/DOI/YOUR_ZENODO_DOI.svg)](https://doi.org/YOUR_ZENODO_DOI)
 ![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
@@ -7,12 +7,31 @@ Chapter 99
 ## Contents
 
 - [Contents](#contents)
-- [Repository Organisation Guidelines](#repository-organisation-guidelines)
-  - [Standard Figure Folder Structure](#standard-figure-folder-structure)
-  - [General Rules](#general-rules)
-- [Folder Naming Conventions](#folder-naming-conventions)
-  - [Figure Folder Names](#figure-folder-names)
-  - [Naming Rules](#naming-rules)
+- [Overview](#overview)
+- [Figures](#figures)
+- [Disclaimer](#disclaimer)
+
+## Overview
+
+Provide a brief summary of the chapter. Include key topics, concepts, and learning objectives.
+
+## Figures
+
+Describe the figures in this chapter. Mention what each figure represents.
+
+Example:
+## Figures
+
+All figure folders are located in the [figures folder](./figures).
+
+| Figure Folder | Preview | Description |
+|---------------|---------|-------------|
+| [fig99_01](./figures/fig99_01/) | ![fig99_01](./fig99_01/figure/ar6_wg1_chap3_figure3_4_surface_temp_anomaly.png) | description for fig99_01 |
+| [fig99_02](./figures/fig99_02/) | address to figure to preview | description for fig99_02 |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 
 
-***UNDER DEVELOPMENT...***
+## Disclaimer
+Please note that figures in this repository may differ from those in the published version due to the editorial process. The repository contains the latest available versions prior to publication.
