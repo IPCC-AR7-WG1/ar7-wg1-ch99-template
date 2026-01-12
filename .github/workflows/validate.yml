@@ -53,7 +53,7 @@ jobs:
               # -----------------------------
               # Required contents
               # -----------------------------
-              required=("code" "data" "figure" "CITATION.cff" "README.md")
+              required=("code" "data" "figure" "CITATION.cff" "README.md" "LICENSE")
 
               for item in "${required[@]}"; do
                 if [ ! -e "$dir/$item" ]; then
