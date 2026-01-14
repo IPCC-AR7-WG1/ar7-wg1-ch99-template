@@ -7,13 +7,8 @@ Chapter 99: chapter title
 ## Contents
 
 - [Contents](#contents)
-- [Overview](#overview)
 - [Figures](#figures)
 - [Disclaimer](#disclaimer)
-
-## Overview
-
-Provide a brief summary of the chapter. Include key topics, concepts, and learning objectives.
 
 ## Figures
 
@@ -21,10 +16,10 @@ Describe the figures in this chapter. Mention what each figure represents.
 
 Example:
 
-| Figure Folder | Preview | Description |
+| Figure Folder | Preview | Figure Title |
 |---------------|---------|-------------|
-| [fig99_01](./figures/fig99_01/) | ![fig99_01](./fig99_01/figure/ar6_wg1_chap3_figure3_4_surface_temp_anomaly.png) | description for fig99_01 |
-| [fig99_02](./figures/fig99_02/) | address to figure to preview | description for fig99_02 |
+| [fig99_01](./figures/fig99_01/) | ![fig99_01](./fig99_01/figure/ar6_wg1_chap3_figure3_4_surface_temp_anomaly.png) | Title of fig99_01 |
+| [fig99_02](./figures/fig99_02/) | address to figure to preview | Title of fig99_02 |
 |  |  |  |
 |  |  |  |
 |  |  |  |
