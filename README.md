@@ -7,8 +7,13 @@ Chapter 99: chapter title
 ## Contents
 
 - [Contents](#contents)
+- [Getting started](#getting-started)
 - [Figures](#figures)
 - [Disclaimer](#disclaimer)
+
+## Getting started
+
+Describe the scope of the repository, how figures are organised, how to set up the environment, and how to reproduce outputs. It should also link to the figure folders (figXX_YY/) and any shared resources (e.g., src/, data/, env/).
 
 ## Figures
 
