@@ -1,6 +1,6 @@
 # Chapter-level Data Folder
 
-This folder is used **only** when multiple figures share the same dataset or preprocessing workflow. In such cases, the canonical dataset and metadata are stored here to **avoid duplication**.
+This folder is used **only** when multiple figures share the same dataset or preprocessing workflow. In such cases, the canonical metadata are stored here to **avoid duplication**.
 
 Please create a subfolder for each multi-figure case using the following naming convention:
 
