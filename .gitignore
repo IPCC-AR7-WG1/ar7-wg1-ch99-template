@@ -1,0 +1,85 @@
+###############################################################################
+# IPCC-AR7-WG1 starter .gitignore
+# - Keep repositories lightweight
+# - Prevent committing local datasets / large inputs
+# - Ignore generated/temp files and common language/IDE artifacts
+# - DO NOT ignore fig*/figure/*.png (figure outputs are intended to be versioned)
+###############################################################################
+
+# ------------------------------------
+# OS / editor / IDE noise
+# ------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+*.tmp
+
+.vscode/
+.idea/
+*.code-workspace
+
+# ------------------------------------
+# Python artifacts
+# ------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+dist/
+build/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+ENV/
+env.bak/
+
+# ------------------------------------
+# R artifacts
+# ------------------------------------
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj
+
+# ------------------------------------
+# Jupyter / notebooks
+# (keep notebooks, ignore checkpoint clutter)
+# ------------------------------------
+.ipynb_checkpoints/
+
+# ------------------------------------
+# Logs and runtime outputs
+# ------------------------------------
+*.log
+*.out
+*.err
+
+# ------------------------------------
+# Instructions for data protection (metadata allowed; datasets not)
+# ------------------------------------
+# NOTE: data/ folder are for metadata files (e.g., README, .yml, .yaml, .json, .md, etc.),
+# add lines here to to prevent accidental commits of input/intermediate data. 
+# For exmaple, common data/binary formats, such as
+# data/**/*.nc
+# data/**/*.hdf
+# data/**/*.h5
+# data/**/*.zarr
+# data/**/*.tif
+# data/**/*.tiff
+# data/**/*.grib
+# data/**/*.grb
+# of local folder containing data, for instance:
+# data/
+# results/
+# etc.
+
