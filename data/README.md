@@ -4,10 +4,10 @@ This folder is used **only** when multiple figures share the same dataset or pre
 
 Please create a subfolder for each multi-figure case using the following naming convention:
 
-**figsXX_YY_KK_HH_etc**
+**figsXX_YY_HH_KK_etc**
 
 - XX: chapter number
-- YY, KK, HH, etc: figure numbers
+- YY, HH, KK, etc: figure numbers
 
 If a figure uses its own independent dataset or preprocessing, all data relevant information should be documented within each figure’s folder instead.
 
